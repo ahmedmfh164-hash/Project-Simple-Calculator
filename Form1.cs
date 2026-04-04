@@ -16,25 +16,6 @@ namespace Calculator
         bool isFirstInput = true;
         string op = "";
 
-        enum enNumbers
-        {
-            num0, num1,
-            num2, num3,
-            num4, num5,
-            num6, num7,
-            num8, num9,
-
-        }
-
-        enum enOp
-        {
-            opMul = 11,
-            opDiv = 12,
-            opAdd = 13,
-            opSub = 14,
-            opMod = 15
-        }
-
         public Calculator()
         {
             InitializeComponent();
@@ -44,18 +25,15 @@ namespace Calculator
         private void Form1_Load(object sender, EventArgs e)
         {
             BackColor = Color.Black;
-            button1.BackColor=Color.BurlyWood;
-            button2.BackColor=Color.BurlyWood;
-            button3.BackColor=Color.BurlyWood;
-            button4.BackColor=Color.BurlyWood;
-            button5.BackColor=Color.BurlyWood;
-            button6.BackColor=Color.BurlyWood;
-            button7.BackColor=Color.BurlyWood;
-            button8.BackColor=Color.BurlyWood;
-            button9.BackColor=Color.BurlyWood;
-            button0.BackColor=Color.BurlyWood;
-            button10.BackColor=Color.BurlyWood;
 
+             foreach (Control c in Controls)
+            {
+                if (c is Button btn)
+                {
+                    btn.BackColor=Color.BurlyWood;
+                }
+            }
+          
             button11.BackColor=Color.Chocolate;
             button12.BackColor=Color.Chocolate;
             button13.BackColor=Color.Chocolate;
@@ -65,23 +43,6 @@ namespace Calculator
 
             buttonCls.BackColor=Color.Yellow;
             buttonDEL.BackColor=Color.Yellow;
-
-            button0.Tag=enNumbers.num0;
-            button1.Tag=enNumbers.num1;
-            button2.Tag=enNumbers.num2;
-            button3.Tag=enNumbers.num3;
-            button4.Tag=enNumbers.num4;
-            button5.Tag=enNumbers.num5;
-            button6.Tag=enNumbers.num6;
-            button7.Tag=enNumbers.num7;
-            button8.Tag=enNumbers.num8;
-            button9.Tag=enNumbers.num9;
-
-            button11.Tag=enOp.opMul;
-            button12.Tag=enOp.opDiv;
-            button13.Tag=enOp.opAdd;
-            button14.Tag=enOp.opSub;
-            button15.Tag=enOp.opMod;
 
            btnColor.Image=Resources.BlackRed;
 
@@ -113,8 +74,7 @@ namespace Calculator
 
         void PrintNumbers(Button btn)
         {
-            int num = (int)btn.Tag;
-
+            int num = Convert.ToInt32(btn.Tag);
             if (num <= 9)
                 Numbers(num.ToString());
 
